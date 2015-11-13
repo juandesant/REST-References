@@ -8,18 +8,6 @@ except ImportError:
     from ConfigParser import SafeConfigParser as ConfigParser
 import os
 
-REQUIRED_KEYS = [
-    'url_rest', # WS api already uses url
-    'account',
-    'password',
-]
-
-CONFIG_FILES = [
-    '/etc/jama.cfg',
-    '~/.jama',
-    '~/.jamarc'
-]
-
 def load_file_config(path=None):
     """
     Loads configuration from file with following content::
@@ -32,6 +20,19 @@ def load_file_config(path=None):
     :param path: path to config file. If not specified, default locations of
     ``/etc/jama.cfg``, ``~/.jama``, and ``~/.jamarc`` are tried.
     """
+    REQUIRED_KEYS = [
+        'url_rest', # WS api already uses url
+        'account',
+        'password',
+    ]
+    
+    CONFIG_FILES = [
+        '/etc/jama.cfg',
+        '~/.jama',
+        '~/.jamarc'
+    ]
+    
+    
     config = ConfigParser()
     if path is None:
         config.read([os.path.expanduser(path) for path in CONFIG_FILES])
@@ -46,6 +47,7 @@ def load_file_config(path=None):
         for key, val in config.items('soap')
         if key in REQUIRED_KEYS
     )
+
 
 
 resource = "projects"
