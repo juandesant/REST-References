@@ -3,6 +3,7 @@ import urllib.request, urllib.error, urllib.parse
 import base64
 from getpass import getpass
 import argparse
+import json
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description="Access Jama API")
@@ -25,4 +26,6 @@ request.add_header("Authorization", f"Basic {base64string}")
 
 response = urllib.request.urlopen(request)
 
-print(response.read());
+# Parse and print JSON for jq
+data = json.loads(response.read().decode('utf-8'))
+print(json.dumps(data))
