@@ -23,6 +23,6 @@ request = urllib.request.Request(api_url + resource)
 base64string = base64.b64encode(f'{args.username}:{password}'.encode()).decode('utf-8').replace('\n', '')
 request.add_header("Authorization", f"Basic {base64string}")
 
-response = urllib.request.urlopen(request);
+response = urllib.request.urlopen(request)
 
 print(response.read());
