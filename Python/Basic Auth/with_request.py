@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # This example makes use of the excellent library at python-requests.org
 import requests
 
