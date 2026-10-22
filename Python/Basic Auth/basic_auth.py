@@ -1,4 +1,4 @@
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import base64
 
 base_url = "{base url}/rest/latest/"
@@ -10,10 +10,10 @@ password = "********"
 
 resource = "projects"
 
-request = urllib2.Request(base_url + resource)
+request = urllib.request.Request(base_url + resource)
 base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
 request.add_header("Authorization", "Basic %s" % base64string)
 
-response = urllib2.urlopen(request);
+response = urllib.request.urlopen(request);
 
-print response.read();
+print(response.read());

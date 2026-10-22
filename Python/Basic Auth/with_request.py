@@ -12,5 +12,5 @@ resource = "projects"
 
 response = requests.get(base_url + resource, auth=(username, password))
 
-print response.text
+print(response.text)
 
